@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>San Francisco Magú</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .seccion {
+      display: none;
+    }
+    .activo {
+      display: block;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #dbeafe;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    h1 {
+      background-color: pink;
+      padding: 10px;
+    }
+    h2 {
+      color: goldenrod;
+    }
+    form {
+      margin: 20px auto;
+      max-width: 400px;
+      text-align: left;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .btn-enviar {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      font-size: 16px;
+    }
+    img {
+      margin: 10px;
+      border-radius: 10px;
+      max-width: 90%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>¿Conocemos Magú?</h1>
+
+  <div>
+    <button onclick="mostrarSeccion('historia')">Historia</button>
+    <button onclick="mostrarSeccion('menu')">Menú</button>
+    <button onclick="mostrarSeccion('info')">Info y trámites</button>
+  </div>
+
+  <div id="historia" class="seccion">
+    <h2>Historia de San Francisco Magú</h2>
+    <p>San Francisco Magú es una comunidad ubicada en el municipio de Nicolás Romero, en el Estado de México. Esta localidad tiene profundas raíces indígenas y una historia que se remonta a tiempos prehispánicos. Su nombre original, "Magú", proviene del náhuatl y se cree que significa “Lugar de magueyes”, reflejando la importancia de esta planta en la región.</p>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Iglesia_de_San_Francisco_Mag%C3%BA.jpg" 
+         alt="Iglesia de San Francisco Magú">
+
+    <p>Antes de la llegada de los españoles, esta región estuvo habitada por pueblos otomíes y posteriormente bajo la influencia mexica. Con la conquista, se fundó la iglesia dedicada a San Francisco de Asís en el siglo XVI.</p>
+
+    <img src="https://mexicoanecdotario.com/wp-content/uploads/2021/10/magu.jpg" 
+         alt="Vista panorámica de Magú">
+
+    <p>Una de las celebraciones más importantes es la fiesta del 4 de octubre en honor a San Francisco de Asís, que incluye danzas, procesiones, pirotecnia y ferias. A pesar del paso del tiempo, Magú conserva su identidad rural y comunitaria.</p>
+
+    <img src="https://www.turismoedomex.gob.mx/sites/turismo.edomex.gob.mx/files/styles/gallery/public/images/2021-03/san_francisco_magu_0.jpg" 
+         alt="Fiesta tradicional de Magú">
+  </div>
+
+  <div id="menu" class="seccion activo">
+    <h2>SAN FRANCISCO MAGÚ</h2>
+    <p><strong>Magú es increíble y extenso</strong></p>
+    <p>Imágenes: Iglesia, vista panorámica, plaza principal y más.</p>
+    <p><strong>Conoce San Francisco Magú desde tu cómodo hogar</strong></p>
+    <p>Número de oficina | Código postal | Correo de la oficina | Delegación</p>
+
+    <h3>Comentarios y Sugerencias</h3>
+    <form id="formulario">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" required>
+
+      <label for="edad">Edad:</label>
+      <input type="number" id="edad" required>
+
+      <label for="sexo">Sexo:</label>
+      <select id="sexo" required>
+        <option value="">Selecciona</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+        <option value="Otro">Otro</option>
+      </select>
+
+      <label for="comentario">Comentario:</label>
+      <textarea id="comentario" rows="5" required></textarea>
+
+      <button type="submit" class="btn-enviar">Enviar Comentario</button>
+    </form>
+  </div>
+
+  <div id="info" class="seccion">
+    <h2>Información y Trámites</h2>
+    <p>En la delegación de San Francisco Magú puedes realizar trámites como:</p>
+    <ul style="text-align:left; display:inline-block;">
+      <li>Actas de nacimiento</li>
+      <li>Permisos de construcción</li>
+      <li>Asesorías legales</li>
+      <li>Consultas ciudadanas</li>
+    </ul>
+
+    <img src="https://www.turismoedomex.gob.mx/sites/turismo.edomex.gob.mx/files/styles/gallery/public/images/2021-03/san_francisco_magu_fachada.jpg" 
+         alt="Oficina de trámites Magú">
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Plaza_de_San_Francisco_Mag%C3%BA.jpg/800px-Plaza_de_San_Francisco_Mag%C3%BA.jpg" 
+         alt="Plaza principal Magú">
+  </div>
+
+  <script>
+    function mostrarSeccion(id) {
+      const secciones = document.querySelectorAll('.seccion');
+      secciones.forEach(seccion => seccion.classList.remove('activo'));
+      document.getElementById(id).classList.add('activo');
+    }
+
+    document.getElementById('formulario').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const comentario = document.getElementById('comentario').value.toLowerCase();
+
+      // Lista de palabras prohibidas
+      const palabrasProhibidas = [
+        "puta", "mierda", "imbécil", "estúpido", "pendejo", "idiota", "cabron",
+        "maldito", "perra", "culero", "coño", "joder", "gilipollas", "chingar",
+        "hdp", "mamón", "zorra", "asco", "lameculos"
+      ];
+
+      for (let palabra of palabrasProhibidas) {
+        if (comentario.includes(palabra)) {
+          alert("Tu comentario contiene lenguaje inapropiado. Por favor, modifícalo.");
+          return;
+        }
+      }
+
+      alert('¡Comentario enviado con éxito!');
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
